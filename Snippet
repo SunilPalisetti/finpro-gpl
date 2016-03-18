@@ -1,0 +1,30 @@
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+public class Snippet {
+	
+	public static void main(String[] args)  throws Exception {
+		Snippet s = new Snippet();
+		s.simpleExample();
+	}
+	
+	public void simpleExample () throws Exception
+	{
+	    FileInputStream fis = new FileInputStream("C:\\Sunil\\workspace\\ecnlib\\espeed\\Java 1.6\\com\\espeed\\jniespd\\eSpeedJNI.class");
+	    parseJavaClassFile ( fis );
+	}
+	protected void parseJavaClassFile ( InputStream classByteStream ) throws Exception
+	{
+	    DataInputStream dataInputStream = new DataInputStream ( classByteStream );
+	    int magicNumber = dataInputStream.readInt();
+	    if ( magicNumber == 0xCAFEBABE )
+	    {
+	        int minorVer = dataInputStream.readUnsignedShort();
+	        int majorVer = dataInputStream.readUnsignedShort();
+	        // do something here with major & minor numbers
+	        
+	        System.out.println(majorVer+"."+minorVer);
+	    }
+	}
+}
