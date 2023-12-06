@@ -1,2 +1,1 @@
-# finpro-gpl
-finpro gpl
+Sample
